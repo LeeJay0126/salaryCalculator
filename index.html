@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Salary Calculator</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href ="salaryStyle.css" rel="stylesheet"/>
+
+        <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+        <script src="salary.js"></script>
+    </head>
+
+    <body>
+        <header class="header">
+            <img class="logo" src="Contents/logo.png" alt="Logo 'LeeJay'"/>
+        </header>
+
+        <main>
+        <div class="mainNav">
+            <ul class="navItems">
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Alberta</a></li>
+                <li class="navItem province selectedProvince"><a href="#" onclick="provinceChange()">BC</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Saskatchewan</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Manitoba</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Ontario</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Quebec</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">New Brunswick</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Nova Scotia</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Prince Edward Island</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Newfoundland</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Yukon</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Northwest Territories</a></li>
+                <li class="navItem province"><a href="#" onclick="provinceChange()">Nunavut</a></li>
+            </ul>
+        </div>
+        
+            <div class="serviceDisplay">
+                <section class="provinceTaxBracket">
+                    
+                </section>
+            </div>
+        </main>
+    </body>
+</html>
