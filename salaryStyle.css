@@ -65,13 +65,13 @@ main {
     height: 100%;
 }
 
-.navItems a:visited, .navItems a:link {
+.navItems li:visited, .navItems li:link {
     text-decoration: none;
     color: black;
     transition: all 0.2s;
 }
 
-.navItems a:hover, .navItems a:active {
+.navItems li:hover, .navItems li:active {
     text-decoration: none;
     color: black;
     font-weight: 800;
@@ -99,4 +99,32 @@ main {
 
 .serviceDisplay {
     background-color: white;
+    padding: 7.2rem 4.8rem;
 }
+
+.sectionIcon {
+    height: 2rem;
+    width: 2rem;
+    color: black;
+}
+
+.displayHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.displayHeading {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.displayContents {
+    max-width: 120rem;
+    max-height: 10rem;
+    background-color: black;
+}
+
+.displaySections {
+    margin-bottom: 2.4rem;
+}  

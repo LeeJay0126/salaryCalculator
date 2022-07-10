@@ -1,49 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Salary Calculator</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href ="salaryStyle.css" rel="stylesheet"/>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
-        <script src="salary.js"></script>
-    </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="salaryStyle.css" rel="stylesheet" />
 
-    <body>
-        <header class="header">
-            <img class="logo" src="Contents/logo.png" alt="Logo 'LeeJay'"/>
-        </header>
+    <script src="salary.js"></script>
+    <title>Salary Calculator</title>
+</head>
 
-        <main>
+<body>
+    <header class="header">
+        <img class="logo" src="Contents/logo.png" alt="Logo 'LeeJay'" />
+    </header>
+
+    <main>
         <div class="mainNav">
             <ul class="navItems">
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Alberta</a></li>
-                <li class="navItem province selectedProvince"><a href="#" onclick="provinceChange()">BC</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Saskatchewan</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Manitoba</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Ontario</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Quebec</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">New Brunswick</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Nova Scotia</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Prince Edward Island</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Newfoundland</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Yukon</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Northwest Territories</a></li>
-                <li class="navItem province"><a href="#" onclick="provinceChange()">Nunavut</a></li>
+                <li class="navItem province" onclick="provinceChanger('Alberta')">Alberta</li>
+                <li class="navItem province" onclick="provinceChanger('BC')">BC</li>
+                <li class="navItem province" onclick="provinceChanger('Saskatchewan')">Saskatchewan</li>
+                <li class="navItem province" onclick="provinceChanger('Manitoba')">Manitoba</li>
+                <li class="navItem province" onclick="provinceChanger('Ontario')">Ontario</li>
+                <li class="navItem province" onclick="provinceChanger('Quebec')">Quebec</li>
+                <li class="navItem province" onclick="provinceChanger('New Brunswick')">New Brunswick</li>
+                <li class="navItem province" onclick="provinceChanger('Nova Scotia')">Nova Scotia</li>
+                <li class="navItem province" onclick="provinceChanger('PrinceEdward')">Prince Edward Island</li>
+                <li class="navItem province" onclick="provinceChanger('NewFound')">Newfoundland</li>
+                <li class="navItem province" onclick="provinceChanger('Yukon')">Yukon</li>
+                <li class="navItem province" onclick="provinceChanger('NWTerritory')">North West Territories</li>
+                <li class="navItem province" onclick="provinceChanger('Nunavut')">Nunavut</li>
             </ul>
         </div>
-        
-            <div class="serviceDisplay">
-                <section class="provinceTaxBracket">
-                    
-                </section>
-            </div>
-        </main>
-    </body>
+
+        <div class="serviceDisplay">
+            <section class="displaySections">
+                <div class="displayHeader taxBracketHeader">
+                    <ion-icon class="sectionIcon" name="airplane-outline"></ion-icon>
+                    <span class="displayHeading">Tax Bracket</span>
+                </div>
+                <div class="displayContents taxBracketContent">
+                    <div id="taxBracketResult"></div>
+                </div>
+            </section>
+            <section class="provinceTaxBracket">
+                <div class="displayHeader taxBracketHeader">
+                    <ion-icon class="sectionIcon" name="airplane-outline"></ion-icon>
+                    <span class="displayHeading">Tax Bracket</span>
+                </div>
+                <div class="displayContents taxBracketContent">
+                    <div id="taxBracketResult"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
 </html>
