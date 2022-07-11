@@ -4,8 +4,7 @@ const federal = [
     [50197, 0.15],
     [50195, 0.205],
     [55233, 0.26],
-    [66083, 0.29],
-    [0.33]
+    [66083, 0.29]
 ]
 
 const federalMax = 0.33;
@@ -33,7 +32,7 @@ const BCMax = 0.205;
 const Saskatchewan = [
 
     [45677, 0.105],
-    [39152, 0.125],
+    [39152, 0.125]
 
 ]
 
@@ -42,7 +41,7 @@ const SaskatchewanMax = 0.145;
 const Manitoba = [
 
     [33723, 0.108],
-    [39162, 0.1275],
+    [39162, 0.1275]
 
 ]
 
@@ -61,9 +60,29 @@ const OntarioMax = 0.1316;
 
 let provinceSelector = "BC"
 
-function taxBracketInformation(){
+function taxBracketInformation(provinceSelector){
 
-    
+    switch(provinceSelector){
+
+        case "Alberta":
+            maxProvince = albertaMax;
+            break;
+        case "BC":
+            maxProvince = BCMax;
+            break;
+        case "Saskatchewan":
+            maxProvince = SaskatchewanMax;
+            break;
+        case "Manitoba":
+            maxProvince = ManitobaMax;
+            break;
+        case "Ontario":
+            maxProvince = OntarioMax;
+            break;
+        default:
+            maxProvince = albertaMax;
+
+    }
 
 }
 
