@@ -1,12 +1,11 @@
 const provinces = ["Alberta", "BC", "Saskatchewan", "Manitoba", "Ontario"];
 
 const federal = [
-    [50197, 0.15],
-    [50195, 0.205],
-    [55233, 0.26],
-    [66083, 0.29]
-]
-
+  [50197, 0.15],
+  [50195, 0.205],
+  [55233, 0.26],
+  [66083, 0.29],
+];
 
 const federalMax = 0.33;
 
@@ -14,7 +13,7 @@ const Alberta = [
   [131220, 0.1],
   [26344, 0.12],
   [52488, 0.13],
-  [104976, 0.14]
+  [104976, 0.14],
 ];
 
 const albertaMax = 0.15;
@@ -25,22 +24,22 @@ const BC = [
   [12760, 0.105],
   [21193, 0.1229],
   [42738, 0.147],
-  [64259, 0.168]
+  [64259, 0.168],
 ];
 
 const BCMax = 0.205;
 
 const Saskatchewan = [
-    [45677, 0.105],
-    [39152, 0.125]
-]
+  [45677, 0.105],
+  [39152, 0.125],
+];
 
 const SaskatchewanMax = 0.145;
 
 const Manitoba = [
-    [33723, 0.108],
-    [39162, 0.1275]
-]
+  [33723, 0.108],
+  [39162, 0.1275],
+];
 
 const ManitobaMax = 0.174;
 
@@ -48,7 +47,7 @@ const Ontario = [
   [45142, 0.0505],
   [45143, 0.0915],
   [59712, 0.1116],
-  [70000, 12.16]
+  [70000, 12.16],
 ];
 
 const OntarioMax = 0.1316;
@@ -57,32 +56,107 @@ let provinceSelector = "BC";
 let selectedProvince = "BC";
 
 function navProvinceColorChanger(provinceId, previousProvinceId) {
-    if (provinceId == "BC" && selectedProvince == "BC"){
-        document.getElementById("BC").style.background = "#aa83c6";
-    }
-    if (provinceId != previousProvinceId) {
+  if (provinceId == "BC" && selectedProvince == "BC") {
+    document.getElementById("BC").style.background = "#aa83c6";
+  }
+  if (provinceId != previousProvinceId) {
     document.getElementById(previousProvinceId).style.background = "#fbf6fe";
     document.getElementById(provinceId).style.background = "#aa83c6";
   }
 }
 
-function taxBracketGetter(taxBracketConstant, taxBracketConstantMax){
-    let taxArray = [taxBracketConstant.length-1]; 
-    for(let i = 0; i < taxBracketConstant.length;i++){
-        if(i == 0){
-            taxArray[i] = "For first $" + taxBracketConstant[i,0] + " tax rate for this province is " + (taxBracketConstant[i,1] * 100) + "%";
-        }else{
-            taxArray[i] = "Tax rate for range $" + taxBracketConstant[i,0] + " ~  $" + (taxBracketConstant[i-1,0] + taxBracketConstant[i,0]) + " is " + (taxBracketConstant[i,1] * 100) + "%";
-        }
-    }
-    taxArray[taxArray.length-1] = "After $" + taxBracketConstant[taxBracketConstant.length-1, 0] + ", tax rate is fixed at " + (taxBracketConstantMax  * 100) + "%";
+function maxProvinceSelection(selectedProvince) {
+  let maxProvince = "";
+
+  switch (selectedProvince) {
+    case "Alberta":
+      maxProvince = albertaMax;
+      break;
+    case "BC":
+      maxProvince = BCMax;
+      break;
+    case "Saskatchewan":
+      maxProvince = SaskatchewanMax;
+      break;
+    case "Manitoba":
+      maxProvince = ManitobaMax;
+      break;
+    case "Ontario":
+      maxProvince = OntarioMax;
+      break;
+    default:
+      maxProvince = albertaMax;
+  }
+
+  return maxProvince;
 }
 
-function taxBracketInformation(provinceId){
-    switch(provinceId){
-        case "BC":
+function provinceSelection(selectedProvince) {
+  let province = "";
 
+  switch (selectedProvince) {
+    case "Alberta":
+      province = Alberta;
+      break;
+    case "BC":
+      province = BC;
+      break;
+    case "Saskatchewan":
+      province = Saskatchewan;
+      break;
+    case "Manitoba":
+      province = Manitoba;
+      break;
+    case "Ontario":
+      province = Ontario;
+      break;
+    default:
+      province = defaultProvince;
+  }
+
+  return province;
+}
+
+function taxBracketGetter(taxBracketConstant, taxBracketConstantMax) {
+  let taxArray = [taxBracketConstant.length - 1];
+  let province = provinceSelection(taxBracketConstant);
+  let salarySum = 0;
+
+  for (let i = 0; i < province.length; i++) {
+    if (i == 0) {
+      salarySum += province[i][0];
+      taxArray[i] =
+        "For first $" +
+        Number(province[i][0]) +
+        " tax rate for this province is " +
+        (province[i][1] * 100).toFixed(2) +
+        "%";
+    } else {
+        taxArray[i] =
+        "Tax rate for range $" +
+        salarySum +
+        " ~  $" +
+        (salarySum + province[i][0]) +
+        " is " +
+        (province[i][1] * 100).toFixed(2) +
+        "%";
+        salarySum += province[i][0];
     }
+  }
+  taxArray[province.length - 1] =
+    "After $" +
+    salarySum +
+    ", tax rate is fixed at " +
+    (taxBracketConstantMax * 100).toFixed(2) +
+    "%";
+
+  return taxArray;
+}
+
+function taxBracketInformation(provinceId) {
+  switch (provinceId) {
+    case "BC":
+  }
 }
 
 function taxCalculator(income, province, maxProvince) {
@@ -115,6 +189,15 @@ function provinceChanger(provinceName) {
     provinceSelector = provinceName;
   }
 
-  navProvinceColorChanger(provinceSelector,selectedProvince);
-  console.log(provinceSelector);
+  navProvinceColorChanger(provinceSelector, selectedProvince);
+  let provinceMax = maxProvinceSelection(provinceSelector);
+
+  let provinceTaxArray = taxBracketGetter(provinceSelector, provinceMax);
+  let displayString = "";
+
+  for (let i = 0; i < provinceTaxArray.length; i++) {
+    displayString += provinceTaxArray[i] + "<br/>";
+  }
+
+  document.getElementById("taxBracketDisplayElement").innerHTML = displayString;
 }
