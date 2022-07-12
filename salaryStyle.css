@@ -65,13 +65,15 @@ main {
     height: 100%;
 }
 
-.navItems li:visited, .navItems li:link {
+.navItems li:visited,
+.navItems li:link {
     text-decoration: none;
     color: black;
     transition: all 0.2s;
 }
 
-.navItems li:hover, .navItems li:active {
+.navItems li:hover,
+.navItems li:active {
     text-decoration: none;
     color: black;
     font-weight: 800;
@@ -86,13 +88,19 @@ main {
     background-color: #fbf6fe;
 }
 
-.selectedProvince {
-    background-color: #aa83c6;
-}
-
 /*------------------------------------------
     Service Section
 --------------------------------------------*/
+
+.displayContents {
+    max-width: 120rem;
+    max-height: 10rem;
+    background-color: black;
+}
+
+.taxBracketSections {
+    justify-content: center;
+}
 
 .serviceDisplay {
     background-color: white;
@@ -117,17 +125,12 @@ main {
     font-weight: 500;
 }
 
-.displayContents {
-    max-width: 120rem;
-    max-height: 10rem;
-    background-color: black;
-}
 
 .ProvinceTaxBracket {
     margin-bottom: 2.4rem;
-}  
+}
 
-.taxBracketDisplayDecoration{
+.taxBracketDisplayDecoration {
     font-size: 1.1rem;
     line-height: 1.6rem;
     letter-spacing: 0.5px;
@@ -139,3 +142,34 @@ main {
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
 }
+
+/*------------------------------------------
+    Salary Calculator layout Section
+--------------------------------------------*/
+
+.checkBoxes {
+    display: flex;
+    justify-content: center;
+    padding: 4.8rem 0rem;
+}
+
+.checkBoxFlexBox {
+    display: flex;
+    gap: 30%;
+}
+
+.checkBoxContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.checkBoxContainer label{
+    align-self: center;
+}
+
+/*------------------------------------------
+    Salary Calculator Main Section
+--------------------------------------------*/
+

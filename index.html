@@ -1,103 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="salaryStyle.css" rel="stylesheet" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="salaryStyle.css" rel="stylesheet" />
+    <script src="salary.js"></script>
+    <title>Salary Calculator</title>
+  </head>
 
-  <script src="salary.js"></script>
-  <title>Salary Calculator</title>
-</head>
+  <body onload="provinceChanger('BC')">
+    <header class="header">
+      <img class="logo" src="Contents/logo.png" alt="Logo 'LeeJay'" />
+    </header>
 
-<body onload="provinceChanger('BC')">
-  <header class="header">
-    <img class="logo" src="Contents/logo.png" alt="Logo 'LeeJay'" />
-  </header>
-
-  <main>
-    <div class="mainNav">
-      <ul class="navItems">
-        <li class="navItem" id="Alberta" onclick="provinceChanger(this.id)">
-          Alberta
-        </li>
-        <li class="navItem" id="BC" onclick="provinceChanger(this.id)">BC</li>
-        <li class="navItem" id="Saskatchewan" onclick="provinceChanger(this.id)">
-          Saskatchewan
-        </li>
-        <li class="navItem" id="Manitoba" onclick="provinceChanger(this.id)">
-          Manitoba
-        </li>
-        <li class="navItem" id="Ontario" onclick="provinceChanger(this.id)">
-          Ontario
-        </li>
-        <li class="navItem" id="Quebec" onclick="provinceChanger(this.id)">
-          Quebec
-        </li>
-        <li class="navItem" id="newBrunswick" onclick="provinceChanger(this.id)">
-          New Brunswick
-        </li>
-        <li class="navItem" id="novaScotia" onclick="provinceChanger(this.id)">
-          Nova Scotia
-        </li>
-        <li class="navItem" id="princeEdward" onclick="provinceChanger(this.id)">
-          Prince Edward Island
-        </li>
-        <li class="navItem" id="newFoundLand" onclick="provinceChanger(this.id)">
-          Newfoundland
-        </li>
-        <li class="navItem" id="yukon" onclick="provinceChanger(this.id)">
-          Yukon
-        </li>
-        <li class="navItem" id="northWestTerritory" onclick="provinceChanger(this.id)">
-          North West Territories
-        </li>
-        <li class="navItem" id="nunavut" onclick="provinceChanger(this.id)">
-          Nunavut
-        </li>
-      </ul>
-    </div>
-
-    <div class="serviceDisplay">
-      <div class="provincialAndFederalTaxBrackets">
-        <section class="projectGuideLine taxBracketSections">
-          <div class="displayHeader">
-            <ion-icon class="sectionIcon" name="book-outline"></ion-icon>
-            <span class="displayHeading">Salary Calculator</span>
-          </div>
-          <p class="taxBracketDisplayDecoration">
-            Ever wondered how much you are getting paid after taxes? Our program calculates your salary after taxes!
-            After entering your hourly wage and hours you work per week or annual salary, we can tell you how much you
-            make after taxes in matter of seconds! Breaking down federal and provincial taxes per province!
-          </p>
-        </section>
-        <section class="provinceTaxBracket taxBracketSections">
-          <div class="displayHeader taxBracketHeader">
-            <ion-icon class="sectionIcon" name="airplane-outline"></ion-icon>
-            <span class="displayHeading">Provincial Tax Bracket</span>
-          </div>
-          <div class="taxBracketDisplay">
-            <p id="taxBracketDisplayElement" class="taxBracketDisplayDecoration"></p>
-          </div>
-        </section>
-        <section class="federalTaxBracket taxBracketSections">
-          <div class="displayHeader">
-            <ion-icon class="sectionIcon" name="people-circle-outline"></ion-icon>
-            <span class="displayHeading">Federal Tax Bracket</span>
-          </div>
-          <p id="federalTaxBracketDisplayElement" class="taxBracketDisplayDecoration"></p>
-        </section>
+    <main>
+      <div class="mainNav">
+        <ul class="navItems">
+          <li class="navItem" id="Alberta" onclick="provinceChanger(this.id)">
+            Alberta
+          </li>
+          <li class="navItem" id="BC" onclick="provinceChanger(this.id)">BC</li>
+          <li
+            class="navItem"
+            id="Saskatchewan"
+            onclick="provinceChanger(this.id)"
+          >
+            Saskatchewan
+          </li>
+          <li class="navItem" id="Manitoba" onclick="provinceChanger(this.id)">
+            Manitoba
+          </li>
+          <li class="navItem" id="Ontario" onclick="provinceChanger(this.id)">
+            Ontario
+          </li>
+          <li class="navItem" id="Quebec" onclick="provinceChanger(this.id)">
+            Quebec
+          </li>
+          <li
+            class="navItem"
+            id="newBrunswick"
+            onclick="provinceChanger(this.id)"
+          >
+            New Brunswick
+          </li>
+          <li
+            class="navItem"
+            id="novaScotia"
+            onclick="provinceChanger(this.id)"
+          >
+            Nova Scotia
+          </li>
+          <li
+            class="navItem"
+            id="princeEdward"
+            onclick="provinceChanger(this.id)"
+          >
+            Prince Edward Island
+          </li>
+          <li
+            class="navItem"
+            id="newFoundLand"
+            onclick="provinceChanger(this.id)"
+          >
+            Newfoundland
+          </li>
+          <li class="navItem" id="yukon" onclick="provinceChanger(this.id)">
+            Yukon
+          </li>
+          <li
+            class="navItem"
+            id="northWestTerritory"
+            onclick="provinceChanger(this.id)"
+          >
+            North West Territories
+          </li>
+          <li class="navItem" id="nunavut" onclick="provinceChanger(this.id)">
+            Nunavut
+          </li>
+        </ul>
       </div>
-    </div>
-  </main>
 
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
+      <div class="serviceDisplay">
+        <div class="provincialAndFederalTaxBrackets">
+          <section class="projectGuideLine taxBracketSections">
+            <div class="displayHeader">
+              <ion-icon class="sectionIcon" name="book-outline"></ion-icon>
+              <span class="displayHeading">Salary Calculator</span>
+            </div>
+            <p class="taxBracketDisplayDecoration">
+              Ever wondered how much you are getting paid after taxes? Our
+              program calculates your salary after taxes! After entering your
+              hourly wage and hours you work per week or annual salary, we can
+              tell you how much you make after taxes in matter of seconds!
+              Breaking down federal and provincial taxes per province!
+            </p>
+          </section>
+          <section class="provinceTaxBracket taxBracketSections">
+            <div class="displayHeader taxBracketHeader">
+              <ion-icon class="sectionIcon" name="airplane-outline"></ion-icon>
+              <span class="displayHeading">Provincial Tax Bracket</span>
+            </div>
+            <div class="taxBracketDisplay">
+              <p
+                id="taxBracketDisplayElement"
+                class="taxBracketDisplayDecoration"
+              ></p>
+            </div>
+          </section>
+          <section class="federalTaxBracket taxBracketSections">
+            <div class="displayHeader">
+              <ion-icon
+                class="sectionIcon"
+                name="people-circle-outline"
+              ></ion-icon>
+              <span class="displayHeading">Federal Tax Bracket</span>
+            </div>
+            <p
+              id="federalTaxBracketDisplayElement"
+              class="taxBracketDisplayDecoration"
+            ></p>
+          </section>
+        </div>
 
+        <div class="salryCalculatorMain">
+          <section class="checkBoxes">
+            <div class="checkBoxFlexBox">
+              <div class="checkBoxContainer hourlyCheckBox">
+                <label>Hourly Wage</label>
+                <input
+                  id="hourlyCheckBox"
+                  class="checkBox"
+                  type="checkbox"
+                  value="hourlyCheckBox"
+                />
+              </div>
+              <div class="checkBoxContainer annualCheckBox">
+                <label>Annual Salary </label>
+                <input
+                  id="annualCheckBox"
+                  class="checkBox"
+                  type="checkbox"
+                  value="annualCheckBox"
+                />
+              </div>
+            </div>
+          </section>
+        </div>
+        
+        <div class="salaryCalculatorMain">
+            <
+        </div>
+
+      </div>
+
+    </main>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
