@@ -110,6 +110,9 @@ function provinceSelection(selectedProvince) {
     case "Ontario":
       province = Ontario;
       break;
+    case "federal":
+      province = federal;
+      break;
     default:
       province = defaultProvince;
   }
@@ -183,21 +186,32 @@ function taxCalculator(income, province, maxProvince) {
   return owedTax;
 }
 
+
 function provinceChanger(provinceName) {
   if (provinceName != provinceSelector) {
     selectedProvince = provinceSelector;
     provinceSelector = provinceName;
   }
-
+  /*Function to change province's color  upon click */
   navProvinceColorChanger(provinceSelector, selectedProvince);
+  /*Functions to change provincial tax bracket */
   let provinceMax = maxProvinceSelection(provinceSelector);
-
   let provinceTaxArray = taxBracketGetter(provinceSelector, provinceMax);
+  /*Functions to change Federal tax bracket */
+  let federalTaxArray = taxBracketGetter("federal", federalMax);
+
+  /*Functions to display provincial and federal tax brackets */
+  taxBracketCaller("taxBracketDisplayElement", provinceTaxArray);
+  taxBracketCaller("federalTaxBracketDisplayElement", federalTaxArray);
+  // taxBracketCaller("taxBracketDisplayElement", provinceTaxArray);
+}
+
+function taxBracketCaller(id, taxStringArray){
   let displayString = "";
 
-  for (let i = 0; i < provinceTaxArray.length; i++) {
-    displayString += provinceTaxArray[i] + "<br/>";
+  for (let i = 0; i < taxStringArray.length; i++) {
+    displayString += taxStringArray[i] + "<br/>";
   }
 
-  document.getElementById("taxBracketDisplayElement").innerHTML = displayString;
+  document.getElementById(id).innerHTML = displayString;
 }
