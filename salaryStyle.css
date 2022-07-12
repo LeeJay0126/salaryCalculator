@@ -22,6 +22,19 @@ body {
     line-height: 1;
     font-weight: 400;
     color: #555;
+    height: 100%;
+    background-color: #fbf6fe;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    width: 100%;
+    height: 100%;
+}
+
+.Icon {
+    color: black;
 }
 
 /*------------------------------------------
@@ -43,18 +56,6 @@ header {
 /*------------------------------------------
     MAIN / Nav SECTION
 --------------------------------------------*/
-
-body {
-    height: 100%;
-    background-color: #fbf6fe;
-}
-
-main {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    width: 100%;
-    height: 100%;
-}
 
 .mainNav {
     height: 100%;
@@ -110,7 +111,6 @@ main {
 .sectionIcon {
     height: 2rem;
     width: 2rem;
-    color: black;
 }
 
 .displayHeader {
@@ -150,12 +150,12 @@ main {
 .checkBoxes {
     display: flex;
     justify-content: center;
-    padding: 4.8rem 0rem;
+    padding: 4.8rem 0rem 0rem 0rem;
 }
 
 .checkBoxFlexBox {
     display: flex;
-    gap: 30%;
+    column-gap: 30%;
 }
 
 .checkBoxContainer {
@@ -173,3 +173,15 @@ main {
     Salary Calculator Main Section
 --------------------------------------------*/
 
+.salaryCalculatorMain {
+    box-shadow: 0 0 0.75px rgb(85, 85, 85, 0.75);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4.8rem 2.4rem;
+    align-items: center;
+}
+
+.inputIcon {
+    height: 4rem;
+    width: 4rem;
+}

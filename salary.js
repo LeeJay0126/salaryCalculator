@@ -135,7 +135,7 @@ function taxBracketGetter(taxBracketConstant, taxBracketConstantMax) {
         (province[i][1] * 100).toFixed(2) +
         "%";
     } else {
-        taxArray[i] =
+      taxArray[i] =
         "Tax rate for range $" +
         salarySum +
         " ~  $" +
@@ -143,7 +143,7 @@ function taxBracketGetter(taxBracketConstant, taxBracketConstantMax) {
         " is " +
         (province[i][1] * 100).toFixed(2) +
         "%";
-        salarySum += province[i][0];
+      salarySum += province[i][0];
     }
   }
   taxArray[province.length] =
@@ -206,7 +206,7 @@ function provinceChanger(provinceName) {
   // taxBracketCaller("taxBracketDisplayElement", provinceTaxArray);
 }
 
-function taxBracketCaller(id, taxStringArray){
+function taxBracketCaller(id, taxStringArray) {
   let displayString = "";
 
   for (let i = 0; i < taxStringArray.length; i++) {
