@@ -1,69 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link href="salaryStyle.css" rel="stylesheet" />
 
     <script src="salary.js"></script>
     <title>Salary Calculator</title>
-</head>
+  </head>
 
-<body>
+  <body onload="provinceChanger('BC')">
     <header class="header">
-        <img class="logo" src="Contents/logo.png" alt="Logo 'LeeJay'" />
+      <img class="logo" src="Contents/logo.png" alt="Logo 'LeeJay'" />
     </header>
 
     <main>
-        <div class="mainNav">
-            <ul class="navItems">
-                <li class="navItem" id="Alberta" onclick="provinceChanger(this.id)">Alberta</li>
-                <li class="navItem" id="BC" onclick="provinceChanger(this.id)">BC</li>
-                <li class="navItem" id="Saskatchewan" onclick="provinceChanger(this.id)">Saskatchewan</li>
-                <li class="navItem" id="Manitoba" onclick="provinceChanger(this.id)">Manitoba</li>
-                <li class="navItem" id="Ontario" onclick="provinceChanger(this.id)">Ontario</li>
-                <li class="navItem" id="Quebec" onclick="provinceChanger(this.id)">Quebec</li>
-                <li class="navItem" id="newBrunswick" onclick="provinceChanger(this.id)">New Brunswick</li>
-                <li class="navItem" id="novaScotia" onclick="provinceChanger(this.id)">Nova Scotia</li>
-                <li class="navItem" id="princeEdward" onclick="provinceChanger(this.id)">Prince Edward Island</li>
-                <li class="navItem" id="newFoundLand" onclick="provinceChanger(this.id)">Newfoundland</li>
-                <li class="navItem" id="yukon" onclick="provinceChanger(this.id)">Yukon</li>
-                <li class="navItem" id="northWestTerritory" onclick="provinceChanger(this.id)">North West Territories</li>
-                <li class="navItem" id="nunavut" onclick="provinceChanger(this.id)">Nunavut</li>
-            </ul>
-        </div>
+      <div class="mainNav">
+        <ul class="navItems">
+          <li class="navItem" id="Alberta" onclick="provinceChanger(this.id)">
+            Alberta
+          </li>
+          <li class="navItem" id="BC" onclick="provinceChanger(this.id)">BC</li>
+          <li
+            class="navItem"
+            id="Saskatchewan"
+            onclick="provinceChanger(this.id)"
+          >
+            Saskatchewan
+          </li>
+          <li class="navItem" id="Manitoba" onclick="provinceChanger(this.id)">
+            Manitoba
+          </li>
+          <li class="navItem" id="Ontario" onclick="provinceChanger(this.id)">
+            Ontario
+          </li>
+          <li class="navItem" id="Quebec" onclick="provinceChanger(this.id)">
+            Quebec
+          </li>
+          <li
+            class="navItem"
+            id="newBrunswick"
+            onclick="provinceChanger(this.id)"
+          >
+            New Brunswick
+          </li>
+          <li
+            class="navItem"
+            id="novaScotia"
+            onclick="provinceChanger(this.id)"
+          >
+            Nova Scotia
+          </li>
+          <li
+            class="navItem"
+            id="princeEdward"
+            onclick="provinceChanger(this.id)"
+          >
+            Prince Edward Island
+          </li>
+          <li
+            class="navItem"
+            id="newFoundLand"
+            onclick="provinceChanger(this.id)"
+          >
+            Newfoundland
+          </li>
+          <li class="navItem" id="yukon" onclick="provinceChanger(this.id)">
+            Yukon
+          </li>
+          <li
+            class="navItem"
+            id="northWestTerritory"
+            onclick="provinceChanger(this.id)"
+          >
+            North West Territories
+          </li>
+          <li class="navItem" id="nunavut" onclick="provinceChanger(this.id)">
+            Nunavut
+          </li>
+        </ul>
+      </div>
 
-        <div class="serviceDisplay">
-            <section class="displaySections">
-                <div class="displayHeader taxBracketHeader">
-                    <ion-icon class="sectionIcon" name="airplane-outline"></ion-icon>
-                    <span class="displayHeading">Tax Bracket</span>
-                </div>
-                <div class="displayContents taxBracketContent">
-                    <div id="taxBracketResult"></div>
-                </div>
-            </section>
-            <section class="provinceTaxBracket">
-                <div class="displayHeader taxBracketHeader">
-                    <ion-icon class="sectionIcon" name="airplane-outline"></ion-icon>
-                    <span class="displayHeading">Tax Bracket</span>
-                </div>
-                <div class="displayContents taxBracketContent">
-                    <div id="taxBracketResult"></div>
-                </div>
-            </section>
-        </div>
+      <div class="serviceDisplay">
+        <section class="provinceTaxBracket">
+          <div class="displayHeader taxBracketHeader">
+            <ion-icon class="sectionIcon" name="airplane-outline"></ion-icon>
+            <span class="displayHeading">Tax Bracket</span>
+          </div>
+          <div class="taxBracketDisplay">
+            <p id="taxBracketDisplayElement"></p>
+          </div>
+        </section>
+      </div>
     </main>
 
-    
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
-
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>

@@ -109,6 +109,7 @@ main {
     display: flex;
     align-items: center;
     gap: 1.6rem;
+    margin-bottom: 1.2rem;
 }
 
 .displayHeading {
@@ -122,6 +123,12 @@ main {
     background-color: black;
 }
 
-.displaySections {
+.ProvinceTaxBracket {
     margin-bottom: 2.4rem;
 }  
+
+#taxBracketDisplayElement{
+    font-size: 1.1rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.5px;
+}
