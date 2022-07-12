@@ -57,11 +57,11 @@ let selectedProvince = "BC";
 
 function navProvinceColorChanger(provinceId, previousProvinceId) {
   if (provinceId == "BC" && selectedProvince == "BC") {
-    document.getElementById("BC").style.background = "#aa83c6";
+    document.getElementById("BC").style.background = "#d5a4f7";
   }
   if (provinceId != previousProvinceId) {
     document.getElementById(previousProvinceId).style.background = "#fbf6fe";
-    document.getElementById(provinceId).style.background = "#aa83c6";
+    document.getElementById(provinceId).style.background = "#d5a4f7";
   }
 }
 
