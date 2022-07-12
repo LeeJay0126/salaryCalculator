@@ -127,8 +127,15 @@ main {
     margin-bottom: 2.4rem;
 }  
 
-#taxBracketDisplayElement{
+.taxBracketDisplayDecoration{
     font-size: 1.1rem;
-    line-height: 2.4rem;
+    line-height: 1.6rem;
     letter-spacing: 0.5px;
+    max-width: 35rem;
+}
+
+.provincialAndFederalTaxBrackets {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
 }
