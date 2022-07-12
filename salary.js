@@ -143,7 +143,7 @@ function taxBracketGetter(taxBracketConstant, taxBracketConstantMax) {
         salarySum += province[i][0];
     }
   }
-  taxArray[province.length - 1] =
+  taxArray[province.length] =
     "After $" +
     salarySum +
     ", tax rate is fixed at " +
