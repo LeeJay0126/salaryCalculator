@@ -159,14 +159,28 @@ header {
 }
 
 .checkBoxContainer {
-    display: flex;
     justify-content: center;
     gap: 1.5rem;
     padding: 1rem;
 }
 
-.checkBoxContainer label{
+.button{
     align-self: center;
+    border: 0;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    background-color: #FFF;
+}
+
+.button:link, .button:visited {
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.button:hover, .button:active {
+    font-weight: 600;
+    background-color: #fbf6fe;
 }
 
 /*------------------------------------------
@@ -184,4 +198,15 @@ header {
 .inputIcon {
     height: 4rem;
     width: 4rem;
+}
+
+.mainInputField{
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+}
+
+.inputField{
+    width: 20rem;
+    margin-left: 4rem;
 }
