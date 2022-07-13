@@ -96,7 +96,7 @@
                 </section>
             </div>
 
-            <div class="salryCalculatorMain">
+            <div class="salaryCalculatorButtons">
                 <section class="checkBoxes">
                     <div class="checkBoxFlexBox">
                         <button class="button" id="hourButton" onclick="hourlyWageButton()">Hourly Wage</button>
@@ -105,7 +105,7 @@
                 </section>
             </div>
 
-            <div class="salaryCalculatorMain">
+            <div class="salaryCalculatorMain" id="mainArea">
                 <section class="mainInputField" id="mainSection">
                     <div class="inputFieldHolder">
                         <div class="displayHeader inputContainer">
@@ -122,7 +122,27 @@
                         <input class="inputField" id="secondaryInputField" type="number" />
                     </div>
                 </section>
+
+                <section class="mainTaxDisplay">
+                    <div class="displayArea" id="hourlyToAnnual">
+                        <span class="displayHeading">Hourly wage calculated to annual</span>
+                        <div class="calculatedDisplayArea" id="hourlyToAnnualCalculated"></div>
+                    </div>
+                    <div class="displayArea">
+                        <span class="displayHeading">Provincial Tax</span>
+                        <div class="calculatedDisplayArea" id="provincialTaxDisplay"></div>
+                    </div>
+                    <div class="displayArea">
+                        <span class="displayHeading">Federal Tax</span>
+                        <div class="calculatedDisplayArea" id="federalTaxDisplay"></div>
+                    </div>
+                    <div class="displayArea">
+                        <span class="displayHeading">Your income after taxes</span>
+                        <div class="calculatedDisplayArea" id="calculatedIncomeDisplay"></div>
+                    </div>
+                </section>
             </div>
+
         </div>
     </main>
 

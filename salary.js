@@ -194,6 +194,12 @@ function taxBracketCaller(id, taxStringArray) {
     displayString += taxStringArray[i] + "<br/>";
   }
 
+  if(taxStringArray.length < BC.length){
+    for(let k = 0; k <= (BC.length - taxStringArray.length); k++){
+      displayString += " <br/>";
+    }
+  }
+
   document.getElementById(id).innerHTML = displayString;
 }
 
@@ -202,9 +208,11 @@ function taxBracketCaller(id, taxStringArray) {
 function hourlyWageButton(){
   document.getElementById("mainHeading").innerHTML="Enter your hourly wage";
   document.getElementById("secondInputField").style.display = "block";
+  document.getElementById("hourlyToAnnual").style.display = "block";
 
   document.getElementById("hourButton").style.background = "#fbf6fe";
-  document.getElementById("mainSection").style.background = "#fbf6fe";
+  document.getElementById("salaryButton").style.background = "#FFF";
+  document.getElementById("mainArea").style.background = "#fbf6fe";
 
   wageType = "hourlyWage";
 }
@@ -212,12 +220,16 @@ function hourlyWageButton(){
 function salaryWageButton(){
   document.getElementById("mainHeading").innerHTML="Enter your annual wage";
   document.getElementById("secondInputField").style.display = "none";
+  document.getElementById("hourlyToAnnual").style.display = "none";
 
   document.getElementById("salaryButton").style.background = "#fbf6fe";
-  document.getElementById("mainSection").style.background = "#fbf6fe";
+  document.getElementById("hourButton").style.background = "#FFF";
+  document.getElementById("mainArea").style.background = "#fbf6fe";
 
   wageType = "salaryWage";
 }
+
+//Main section tax calculation
 
 
 function taxCalculator(income, province, maxProvince) {
