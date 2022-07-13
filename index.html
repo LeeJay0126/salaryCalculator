@@ -15,7 +15,7 @@
     <title>Salary Calculator</title>
 </head>
 
-<body onload="provinceChanger('BC')">
+<body onload="onLoadFunction()">
     <header class="header">
         <img class="logo" src="Contents/logo.png" alt="Logo 'LeeJay'" />
     </header>
@@ -99,27 +99,27 @@
             <div class="salryCalculatorMain">
                 <section class="checkBoxes">
                     <div class="checkBoxFlexBox">
-                        <div class="checkBoxContainer hourlyCheckBox">
-                            <label>Hourly Wage</label>
-                            <input id="hourlyCheckBox" class="checkBox" type="checkbox" value="hourlyCheckBox" />
-                        </div>
-                        <div class="checkBoxContainer annualCheckBox">
-                            <label>Annual Salary </label>
-                            <input id="annualCheckBox" class="checkBox" type="checkbox" value="annualCheckBox" />
-                        </div>
+                        <button class="button" id="hourButton" onclick="hourlyWageButton()">Hourly Wage</button>
+                        <button class="button" id="salaryButton" onclick="salaryWageButton()">Salary Wage</button>
                     </div>
                 </section>
             </div>
 
             <div class="salaryCalculatorMain">
-                <section class="mainInputField">
-                    <div class="displayHeader inputContainer">
-                        <ion-icon id="mainIcon" class="inputIcon Icon" name="calendar-outline"></ion-icon>
-                        <span class="displayHeading" id="mainHeading"></span>
+                <section class="mainInputField" id="mainSection">
+                    <div class="inputFieldHolder">
+                        <div class="displayHeader inputContainer">
+                            <ion-icon id="mainIcon" class="inputIcon Icon" name="cash-outline"></ion-icon>
+                            <span class="displayHeading" id="mainHeading">Enter your annual salary</span>
+                        </div>
+                        <input class="inputField" id="mainInputField" type="number" />
                     </div>
-                    <div class="displayHeader inputContainer">
-                        <ion-icon id="secondaryIcon" class="inputIcon Icon" name="cash-outline"></ion-icon>
-                        <span class="displayHeading" id="secondaryHeading"></span>
+                    <div class="inputFieldHolder" id="secondInputField">
+                        <div class="displayHeader inputContainer">
+                            <ion-icon id="secondaryIcon" class="inputIcon Icon" name="calendar-outline"></ion-icon>
+                            <span class="displayHeading" id="secondaryHeading">Enter your hours per week</span>
+                        </div>
+                        <input class="inputField" id="secondaryInputField" type="number" />
                     </div>
                 </section>
             </div>

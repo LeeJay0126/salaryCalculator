@@ -54,17 +54,9 @@ const OntarioMax = 0.1316;
 
 let provinceSelector = "BC";
 let selectedProvince = "BC";
+let wageType = "salaryWage";
 
-function navProvinceColorChanger(provinceId, previousProvinceId) {
-  if (provinceId == "BC" && selectedProvince == "BC") {
-    document.getElementById("BC").style.background = "#d5a4f7";
-  }
-  if (provinceId != previousProvinceId) {
-    document.getElementById(previousProvinceId).style.background = "#fbf6fe";
-    document.getElementById(provinceId).style.background = "#d5a4f7";
-  }
-}
-
+//General Functions//
 function maxProvinceSelection(selectedProvince) {
   let maxProvince = "";
 
@@ -120,6 +112,20 @@ function provinceSelection(selectedProvince) {
   return province;
 }
 
+//province changer + bracket changer//
+
+function navProvinceColorChanger(provinceId, previousProvinceId) {
+  if (provinceId == "BC" && selectedProvince == "BC") {
+    document.getElementById("BC").style.background = "#d5a4f7";
+  }
+  if (provinceId != previousProvinceId) {
+    document.getElementById(previousProvinceId).style.background = "#fbf6fe";
+    document.getElementById(provinceId).style.background = "#d5a4f7";
+  }
+}
+
+
+
 function taxBracketGetter(taxBracketConstant, taxBracketConstantMax) {
   let taxArray = [taxBracketConstant.length - 1];
   let province = provinceSelection(taxBracketConstant);
@@ -162,31 +168,6 @@ function taxBracketInformation(provinceId) {
   }
 }
 
-function taxCalculator(income, province, maxProvince) {
-  let currentBracket = 0;
-  let currentIncome = income;
-  let owedTax = 0;
-
-  while (true) {
-    if (currentBracket == province.length) {
-      owedTax += currentIncome * maxProvince;
-      break;
-    }
-
-    if (currentIncome <= province[currentBracket][0]) {
-      owedTax += currentIncome * province[currentBracket][1];
-      break;
-    }
-
-    owedTax += province[currentBracket][1] * province[currentBracket][0];
-    currentIncome -= province[currentBracket][0];
-    currentBracket++;
-  }
-
-  return owedTax;
-}
-
-
 function provinceChanger(provinceName) {
   if (provinceName != provinceSelector) {
     selectedProvince = provinceSelector;
@@ -215,3 +196,60 @@ function taxBracketCaller(id, taxStringArray) {
 
   document.getElementById(id).innerHTML = displayString;
 }
+
+//Salary calculator main section display upon hourly/ salary wage button click//
+
+function hourlyWageButton(){
+  document.getElementById("mainHeading").innerHTML="Enter your hourly wage";
+  document.getElementById("secondInputField").style.display = "block";
+
+  document.getElementById("hourButton").style.background = "#fbf6fe";
+  document.getElementById("mainSection").style.background = "#fbf6fe";
+
+  wageType = "hourlyWage";
+}
+
+function salaryWageButton(){
+  document.getElementById("mainHeading").innerHTML="Enter your annual wage";
+  document.getElementById("secondInputField").style.display = "none";
+
+  document.getElementById("salaryButton").style.background = "#fbf6fe";
+  document.getElementById("mainSection").style.background = "#fbf6fe";
+
+  wageType = "salaryWage";
+}
+
+
+function taxCalculator(income, province, maxProvince) {
+  let currentBracket = 0;
+  let currentIncome = income;
+  let owedTax = 0;
+
+  while (true) {
+    if (currentBracket == province.length) {
+      owedTax += currentIncome * maxProvince;
+      break;
+    }
+
+    if (currentIncome <= province[currentBracket][0]) {
+      owedTax += currentIncome * province[currentBracket][1];
+      break;
+    }
+
+    owedTax += province[currentBracket][1] * province[currentBracket][0];
+    currentIncome -= province[currentBracket][0];
+    currentBracket++;
+  }
+
+  return owedTax;
+}
+
+//onload function
+
+function onLoadFunction(){
+
+  provinceChanger("BC");
+  salaryWageButton();
+
+}
+
