@@ -147,6 +147,15 @@ header {
     Salary Calculator layout Section
 --------------------------------------------*/
 
+.mainInputField{
+    justify-self: center;
+}
+
+.inputFieldHolder {
+    height: 15rem;
+    width: 30rem;
+}
+
 .checkBoxes {
     display: flex;
     justify-content: center;
@@ -188,10 +197,14 @@ header {
     Salary Calculator Main Section
 --------------------------------------------*/
 
+.displayArea {
+    height: 10rem;
+}
+
 .salaryCalculatorMain {
     box-shadow: 0 0 0.75px rgb(85, 85, 85, 0.75);
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 4.8rem 2.4rem;
     align-items: center;
 }
@@ -227,4 +240,8 @@ input [type=number] {
 
 .calculatedDisplayArea {
     height: 7rem;
+}
+
+.displayArea {
+    padding: 3rem 0 0 3rem;
 }
