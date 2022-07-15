@@ -106,7 +106,7 @@
             </div>
 
             <div class="salaryCalculatorMain" id="mainArea">
-                <section class="mainInputField" id="mainSection">
+                <div class="mainInputField" id="mainSection">
                     <div class="inputFieldHolder">
                         <div class="displayHeader inputContainer">
                             <ion-icon id="mainIcon" class="inputIcon Icon" name="cash-outline"></ion-icon>
@@ -114,18 +114,21 @@
                         </div>
                         <input class="inputField" id="mainInputField" type="number" />
                     </div>
-                    <div class="inputFieldHolder" id="secondInputField">
-                        <div class="displayHeader inputContainer">
-                            <ion-icon id="secondaryIcon" class="inputIcon Icon" name="calendar-outline"></ion-icon>
-                            <span class="displayHeading" id="secondaryHeading">Enter your hours per week</span>
+                    <div class="inputFieldHolder">
+                        <div id="secondInputField">
+                            <div class="displayHeader inputContainer">
+                                <ion-icon id="secondaryIcon" class="inputIcon Icon" name="calendar-outline"></ion-icon>
+                                <span class="displayHeading" id="secondaryHeading">Enter your hours per week</span>
+                            </div>
+                            <input class="inputField" id="secondaryInputField" type="number" />
                         </div>
-                        <input class="inputField" id="secondaryInputField" type="number" />
                     </div>
-                </section>
+                </div>
+
 
                 <section class="mainTaxDisplay">
-                    <div class="displayArea" id="hourlyToAnnual">
-                        <span class="displayHeading">Hourly wage calculated to annual</span>
+                    <div class="displayArea">
+                        <span class="displayHeading" id="firstDisplayHeading">Hourly wage calculated to annual</span>
                         <div class="calculatedDisplayArea" id="hourlyToAnnualCalculated"></div>
                     </div>
                     <div class="displayArea">
@@ -140,6 +143,12 @@
                         <span class="displayHeading">Your income after taxes</span>
                         <div class="calculatedDisplayArea" id="calculatedIncomeDisplay"></div>
                     </div>
+                </section>
+
+                <section class="resultSection">
+                    <button class="resultButton">
+                        
+                    </button>
                 </section>
             </div>
 

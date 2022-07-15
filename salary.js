@@ -208,7 +208,7 @@ function taxBracketCaller(id, taxStringArray) {
 function hourlyWageButton(){
   document.getElementById("mainHeading").innerHTML="Enter your hourly wage";
   document.getElementById("secondInputField").style.display = "block";
-  document.getElementById("hourlyToAnnual").style.display = "block";
+  document.getElementById("firstDisplayHeading").innerHTML= "Hourly wage calculated";
 
   document.getElementById("hourButton").style.background = "#fbf6fe";
   document.getElementById("salaryButton").style.background = "#FFF";
@@ -220,7 +220,7 @@ function hourlyWageButton(){
 function salaryWageButton(){
   document.getElementById("mainHeading").innerHTML="Enter your annual wage";
   document.getElementById("secondInputField").style.display = "none";
-  document.getElementById("hourlyToAnnual").style.display = "none";
+  document.getElementById("firstDisplayHeading").innerHTML= "Annual Salary";
 
   document.getElementById("salaryButton").style.background = "#fbf6fe";
   document.getElementById("hourButton").style.background = "#FFF";
