@@ -245,3 +245,35 @@ input [type=number] {
 .displayArea {
     padding: 3rem 0 0 3rem;
 }
+
+.resultSection{
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+}
+
+.centerButton {
+    display: flex;
+    justify-content: center;
+}
+
+#resultButton {
+    width: 15rem;
+    height: 5rem;
+    font-size: 1.5rem;
+    font-family: "Rubik", sans-serif;
+    background-color: #fbf6fe;
+    border-width: 1px;
+}
+
+#resultButton:hover , #resultButton:active{
+    font-weight: 500;
+}
+
+#resultButton:link , #resultButton:visited{
+    text-decoration: none;
+}
+
+#resultDisplay {
+    height: 10rem;
+}

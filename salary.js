@@ -205,14 +205,25 @@ function taxBracketCaller(id, taxStringArray) {
 
 //Salary calculator main section display upon hourly/ salary wage button click//
 
+function inputFieldReset(){
+  document.getElementById("mainInputField").value = "";
+  document.getElementById("secondaryInputField").value = "";
+
+  for(let i = 0; i < document.getElementsByClassName("calculatedDisplayArea").length; i++){
+    document.getElementsByClassName("calculatedDisplayArea")[i].innerHTML = "";
+  }
+}
+
 function hourlyWageButton(){
   document.getElementById("mainHeading").innerHTML="Enter your hourly wage";
   document.getElementById("secondInputField").style.display = "block";
-  document.getElementById("firstDisplayHeading").innerHTML= "Hourly wage calculated";
+  document.getElementById("firstDisplayHeading").innerHTML= "Calculated Annual Salary";
 
   document.getElementById("hourButton").style.background = "#fbf6fe";
   document.getElementById("salaryButton").style.background = "#FFF";
   document.getElementById("mainArea").style.background = "#fbf6fe";
+
+  inputFieldReset();
 
   wageType = "hourlyWage";
 }
@@ -220,11 +231,13 @@ function hourlyWageButton(){
 function salaryWageButton(){
   document.getElementById("mainHeading").innerHTML="Enter your annual wage";
   document.getElementById("secondInputField").style.display = "none";
-  document.getElementById("firstDisplayHeading").innerHTML= "Annual Salary";
+  document.getElementById("firstDisplayHeading").innerHTML= "Your Annual Salary Before Tax";
 
   document.getElementById("salaryButton").style.background = "#fbf6fe";
   document.getElementById("hourButton").style.background = "#FFF";
   document.getElementById("mainArea").style.background = "#fbf6fe";
+
+  inputFieldReset();
 
   wageType = "salaryWage";
 }
@@ -254,6 +267,32 @@ function taxCalculator(income, province, maxProvince) {
   }
 
   return owedTax;
+}
+
+//ProtoType
+function calculateIncome(){
+  let mainInput = Number(document.getElementById("mainInputField").value);
+  let secondaryInput = Number(document.getElementById("secondaryInputField").value);
+
+  //Input validation goes here
+
+  let calculatedAnnualSalary = firstDisplayHeading(mainInput, secondaryInput);
+  document.getElementById("hourlyToAnnualCalculated").innerHTML = calculatedAnnualSalary;
+}
+
+function firstDisplayHeading(inputField, secondaryInputField){
+  let calculatedIncome = 0;
+  
+  if(wageType == "salaryWage"){
+    secondaryInputField = 1;
+  }
+
+  if(wageType == "hourlyWage"){
+    secondaryInputField *= 52;
+  }
+
+  calculatedIncome = inputField * secondaryInputField;
+  return calculatedIncome;
 }
 
 //onload function
