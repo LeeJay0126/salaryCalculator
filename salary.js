@@ -205,6 +205,15 @@ function taxBracketCaller(id, taxStringArray) {
 
 //Salary calculator main section display upon hourly/ salary wage button click//
 
+function inputFieldReset(){
+  document.getElementById("mainInputField").value = "";
+  document.getElementById("secondaryInputField").value = "";
+
+  for(let i = 0; i < document.getElementsByClassName("calculatedDisplayArea").length; i++){
+    document.getElementsByClassName("calculatedDisplayArea")[i].innerHTML = "";
+  }
+}
+
 function hourlyWageButton(){
   document.getElementById("mainHeading").innerHTML="Enter your hourly wage";
   document.getElementById("secondInputField").style.display = "block";
@@ -213,6 +222,8 @@ function hourlyWageButton(){
   document.getElementById("hourButton").style.background = "#fbf6fe";
   document.getElementById("salaryButton").style.background = "#FFF";
   document.getElementById("mainArea").style.background = "#fbf6fe";
+
+  inputFieldReset();
 
   wageType = "hourlyWage";
 }
@@ -225,6 +236,8 @@ function salaryWageButton(){
   document.getElementById("salaryButton").style.background = "#fbf6fe";
   document.getElementById("hourButton").style.background = "#FFF";
   document.getElementById("mainArea").style.background = "#fbf6fe";
+
+  inputFieldReset();
 
   wageType = "salaryWage";
 }
@@ -254,6 +267,32 @@ function taxCalculator(income, province, maxProvince) {
   }
 
   return owedTax;
+}
+
+//ProtoType
+function calculateIncome(){
+  let mainInput = Number(document.getElementById("mainInputField").value);
+  let secondaryInput = Number(document.getElementById("secondaryInputField").value);
+
+  //Input validation goes here
+
+  let calculatedAnnualSalary = firstDisplayHeading(mainInput, secondaryInput);
+  document.getElementById("hourlyToAnnualCalculated").innerHTML = calculatedAnnualSalary;
+}
+
+function firstDisplayHeading(inputField, secondaryInputField){
+  let calculatedIncome = 0;
+  
+  if(wageType == "salaryWage"){
+    secondaryInputField = 1;
+  }
+
+  if(wageType == "hourlyWage"){
+    secondaryInputField *= 52;
+  }
+
+  calculatedIncome = inputField * secondaryInputField;
+  return calculatedIncome;
 }
 
 //onload function
