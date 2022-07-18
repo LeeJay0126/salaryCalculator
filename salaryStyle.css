@@ -101,6 +101,7 @@ header {
 
 .taxBracketSections {
     justify-content: center;
+    font-weight: 500;
 }
 
 .serviceDisplay {
@@ -240,6 +241,8 @@ input [type=number] {
 
 .calculatedDisplayArea {
     height: 7rem;
+    font-size: 1.4rem;
+    padding-top: 2rem;
 }
 
 .displayArea {
@@ -254,8 +257,10 @@ input [type=number] {
 
 .centerButton {
     display: flex;
+    align-content: center;
     justify-content: center;
 }
+
 
 #resultButton {
     width: 15rem;

@@ -54,6 +54,7 @@ const OntarioMax = 0.1316;
 
 let provinceSelector = "BC";
 let selectedProvince = "BC";
+let provinceMax = "";
 let wageType = "salaryWage";
 
 //General Functions//
@@ -162,12 +163,6 @@ function taxBracketGetter(taxBracketConstant, taxBracketConstantMax) {
   return taxArray;
 }
 
-function taxBracketInformation(provinceId) {
-  switch (provinceId) {
-    case "BC":
-  }
-}
-
 function provinceChanger(provinceName) {
   if (provinceName != provinceSelector) {
     selectedProvince = provinceSelector;
@@ -194,8 +189,8 @@ function taxBracketCaller(id, taxStringArray) {
     displayString += taxStringArray[i] + "<br/>";
   }
 
-  if(taxStringArray.length < BC.length){
-    for(let k = 0; k <= (BC.length - taxStringArray.length); k++){
+  if (taxStringArray.length < BC.length) {
+    for (let k = 0; k <= (BC.length - taxStringArray.length); k++) {
       displayString += " <br/>";
     }
   }
@@ -205,19 +200,19 @@ function taxBracketCaller(id, taxStringArray) {
 
 //Salary calculator main section display upon hourly/ salary wage button click//
 
-function inputFieldReset(){
+function inputFieldReset() {
   document.getElementById("mainInputField").value = "";
   document.getElementById("secondaryInputField").value = "";
 
-  for(let i = 0; i < document.getElementsByClassName("calculatedDisplayArea").length; i++){
+  for (let i = 0; i < document.getElementsByClassName("calculatedDisplayArea").length; i++) {
     document.getElementsByClassName("calculatedDisplayArea")[i].innerHTML = "";
   }
 }
 
-function hourlyWageButton(){
-  document.getElementById("mainHeading").innerHTML="Enter your hourly wage";
+function hourlyWageButton() {
+  document.getElementById("mainHeading").innerHTML = "Enter your hourly wage";
   document.getElementById("secondInputField").style.display = "block";
-  document.getElementById("firstDisplayHeading").innerHTML= "Calculated Annual Salary";
+  document.getElementById("firstDisplayHeading").innerHTML = "Calculated Annual Salary";
 
   document.getElementById("hourButton").style.background = "#fbf6fe";
   document.getElementById("salaryButton").style.background = "#FFF";
@@ -228,10 +223,10 @@ function hourlyWageButton(){
   wageType = "hourlyWage";
 }
 
-function salaryWageButton(){
-  document.getElementById("mainHeading").innerHTML="Enter your annual wage";
+function salaryWageButton() {
+  document.getElementById("mainHeading").innerHTML = "Enter your annual wage";
   document.getElementById("secondInputField").style.display = "none";
-  document.getElementById("firstDisplayHeading").innerHTML= "Your Annual Salary Before Tax";
+  document.getElementById("firstDisplayHeading").innerHTML = "Your Annual Salary Before Tax";
 
   document.getElementById("salaryButton").style.background = "#fbf6fe";
   document.getElementById("hourButton").style.background = "#FFF";
@@ -270,24 +265,41 @@ function taxCalculator(income, province, maxProvince) {
 }
 
 //ProtoType
-function calculateIncome(){
+function calculateIncome() {
   let mainInput = Number(document.getElementById("mainInputField").value);
   let secondaryInput = Number(document.getElementById("secondaryInputField").value);
+  let province = provinceSelection(selectedProvince);
+  let provinceMax = maxProvinceSelection(province);
 
   //Input validation goes here
 
   let calculatedAnnualSalary = firstDisplayHeading(mainInput, secondaryInput);
-  document.getElementById("hourlyToAnnualCalculated").innerHTML = calculatedAnnualSalary;
+  document.getElementById("hourlyToAnnualCalculated").innerHTML = "$" + (calculatedAnnualSalary).toFixed(2);
+
+  let provincialTax = taxCalculator(calculatedAnnualSalary, province, provinceMax);
+  let federalTax = taxCalculator(calculatedAnnualSalary, federal, federalMax);
+
+  document.getElementById("provincialTaxDisplay").innerHTML = "$" + (provincialTax).toFixed(2);
+  document.getElementById("federalTaxDisplay").innerHTML = "$" + (federalTax).toFixed(2);
+
+  let totalTax = Number(provincialTax + federalTax).toFixed(2);
+
+  document.getElementById("calculatedIncomeDisplay").innerHTML = "$" + (calculatedAnnualSalary - totalTax).toFixed(2);
+
+  let totalTaxPercentage = Number(totalTax) / Number(calculatedAnnualSalary);
+  document.getElementById("resultDisplay").innerHTML = "Your total calculated tax is $" + totalTax + ". <br>" 
+  + " Your tax is equal to approximately " + totalTaxPercentage.toFixed(2) + "% of your annual income.";
+
 }
 
-function firstDisplayHeading(inputField, secondaryInputField){
+function firstDisplayHeading(inputField, secondaryInputField) {
   let calculatedIncome = 0;
-  
-  if(wageType == "salaryWage"){
+
+  if (wageType == "salaryWage") {
     secondaryInputField = 1;
   }
 
-  if(wageType == "hourlyWage"){
+  if (wageType == "hourlyWage") {
     secondaryInputField *= 52;
   }
 
@@ -297,7 +309,7 @@ function firstDisplayHeading(inputField, secondaryInputField){
 
 //onload function
 
-function onLoadFunction(){
+function onLoadFunction() {
 
   provinceChanger("BC");
   salaryWageButton();
