@@ -207,6 +207,10 @@ function inputFieldReset() {
   for (let i = 0; i < document.getElementsByClassName("calculatedDisplayArea").length; i++) {
     document.getElementsByClassName("calculatedDisplayArea")[i].innerHTML = "";
   }
+  
+  for (let i = 0; i < document.getElementsByClassName("errorDisplay").length; i++) {
+    document.getElementsByClassName("errorDisplay")[i].innerHTML = "";
+  }
 }
 
 function hourlyWageButton() {
@@ -266,29 +270,33 @@ function taxCalculator(income, province, maxProvince) {
 
 //ProtoType
 function calculateIncome() {
+
+  inputFieldReset();
+
   let mainInput = Number(document.getElementById("mainInputField").value);
   let secondaryInput = Number(document.getElementById("secondaryInputField").value);
   let province = provinceSelection(selectedProvince);
   let provinceMax = maxProvinceSelection(province);
 
   //Input validation goes here
+  if (inputValidation(mainInput, "display1") && (inputValidation(secondaryInput, "display2") || wageType == "salaryWage" )) {
+    let calculatedAnnualSalary = firstDisplayHeading(mainInput, secondaryInput);
+    document.getElementById("hourlyToAnnualCalculated").innerHTML = "$" + (calculatedAnnualSalary).toFixed(2);
 
-  let calculatedAnnualSalary = firstDisplayHeading(mainInput, secondaryInput);
-  document.getElementById("hourlyToAnnualCalculated").innerHTML = "$" + (calculatedAnnualSalary).toFixed(2);
+    let provincialTax = taxCalculator(calculatedAnnualSalary, province, provinceMax);
+    let federalTax = taxCalculator(calculatedAnnualSalary, federal, federalMax);
 
-  let provincialTax = taxCalculator(calculatedAnnualSalary, province, provinceMax);
-  let federalTax = taxCalculator(calculatedAnnualSalary, federal, federalMax);
+    document.getElementById("provincialTaxDisplay").innerHTML = "$" + (provincialTax).toFixed(2);
+    document.getElementById("federalTaxDisplay").innerHTML = "$" + (federalTax).toFixed(2);
 
-  document.getElementById("provincialTaxDisplay").innerHTML = "$" + (provincialTax).toFixed(2);
-  document.getElementById("federalTaxDisplay").innerHTML = "$" + (federalTax).toFixed(2);
+    let totalTax = Number(provincialTax + federalTax).toFixed(2);
 
-  let totalTax = Number(provincialTax + federalTax).toFixed(2);
+    document.getElementById("calculatedIncomeDisplay").innerHTML = "$" + (calculatedAnnualSalary - totalTax).toFixed(2);
 
-  document.getElementById("calculatedIncomeDisplay").innerHTML = "$" + (calculatedAnnualSalary - totalTax).toFixed(2);
-
-  let totalTaxPercentage = Number(totalTax) / Number(calculatedAnnualSalary);
-  document.getElementById("resultDisplay").innerHTML = "Your total calculated tax is $" + totalTax + ". <br>" 
-  + " Your tax is equal to approximately " + totalTaxPercentage.toFixed(2) + "% of your annual income.";
+    let totalTaxPercentage = Number(totalTax) / Number(calculatedAnnualSalary);
+    document.getElementById("resultDisplay").innerHTML = "Your total calculated tax is $" + totalTax + ". <br>"
+      + " Your tax is equal to approximately " + totalTaxPercentage.toFixed(2) + "% of your annual income.";
+  }
 
 }
 
@@ -305,6 +313,21 @@ function firstDisplayHeading(inputField, secondaryInputField) {
 
   calculatedIncome = inputField * secondaryInputField;
   return calculatedIncome;
+}
+
+function inputValidation(input, id) {
+
+  if (input < 0) {
+    document.getElementById(id).innerHTML = "Input has to be a positive number";
+    return false;
+  }
+
+  if (input == 0) {
+    document.getElementById(id).innerHTML = "Input has to be greater than $0";
+    return false;
+  }
+
+  return true;
 }
 
 //onload function
