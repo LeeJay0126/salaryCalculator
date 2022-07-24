@@ -224,6 +224,8 @@ function hourlyWageButton() {
   document.getElementById("salaryButton").style.background = "#FFF";
   document.getElementById("mainArea").style.background = "#fbf6fe";
 
+  document.getElementById("mainInputField").placeholder = "Enter your hourly wage";
+
   inputFieldReset("none");
 
   wageType = "hourlyWage";
@@ -237,6 +239,8 @@ function salaryWageButton() {
   document.getElementById("salaryButton").style.background = "#fbf6fe";
   document.getElementById("hourButton").style.background = "#FFF";
   document.getElementById("mainArea").style.background = "#fbf6fe";
+
+  document.getElementById("mainInputField").placeholder = "Enter your annual salary";
 
   inputFieldReset("none");
 
