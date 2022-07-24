@@ -262,6 +262,11 @@ input [type=number] {
     justify-content: center;
 }
 
+.errorDisplay {
+    margin-left: 4rem;
+    color: red;
+    font-size: 1.2rem;
+}
 
 #resultButton {
     width: 15rem;
