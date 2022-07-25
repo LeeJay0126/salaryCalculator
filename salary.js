@@ -140,14 +140,14 @@ function taxBracketGetter(taxBracketConstant, taxBracketConstantMax) {
     if (i == 0) {
       salarySum += province[i][0];
       taxArray[i] =
-        "For first $" +
+        "First $" +
         Number(province[i][0]) +
-        " tax rate for this province is " +
+        ", tax rate is " +
         (province[i][1] * 100).toFixed(2) +
         "%";
     } else {
       taxArray[i] =
-        "Tax rate for range $" +
+        "Tax rate for $" +
         salarySum +
         " ~  $" +
         (salarySum + province[i][0]) +
@@ -172,7 +172,7 @@ function provinceChanger(provinceName) {
     selectedProvince = provinceSelector;
     provinceSelector = provinceName;
   }
-  /*Function to change province's color  upon click */
+  /*Function to change province's color  upon click */5
   navProvinceColorChanger(provinceSelector, selectedProvince);
   /*Functions to change provincial tax bracket */
   let provinceMax = maxProvinceSelection(provinceSelector);
