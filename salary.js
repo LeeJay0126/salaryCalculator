@@ -1,56 +1,12 @@
-const provinces = ["Alberta", "BC", "Saskatchewan", "Manitoba", "Ontario"];
+// import {
+//   BC, Alberta, Saskatchewan, Manitoba, Ontario, Quebec,
+//   NewBrunswick, NovaScotia, PrinceEd, Newfoundland, Yukon, NorthWest, Nunavut,
+//   BCMax, albertaMax, SaskatchewanMax, ManitobaMax, OntarioMax, QuebecMax, NunavutMax,
+//   NewBrunswickMax, NovaScotiaMax, PrinceEdMax, NewfoundlandMax, YukonMax, NorthWestMax,
+//   federal, federalMax
+// } from "./constants.js";
 
-const federal = [
-  [50197, 0.15],
-  [50195, 0.205],
-  [55233, 0.26],
-  [66083, 0.29],
-];
-
-const federalMax = 0.33;
-
-const Alberta = [
-  [131220, 0.1],
-  [26344, 0.12],
-  [52488, 0.13],
-  [104976, 0.14],
-];
-
-const albertaMax = 0.15;
-
-const BC = [
-  [43070, 0.0506],
-  [43071, 0.077],
-  [12760, 0.105],
-  [21193, 0.1229],
-  [42738, 0.147],
-  [64259, 0.168],
-];
-
-const BCMax = 0.205;
-
-const Saskatchewan = [
-  [45677, 0.105],
-  [39152, 0.125],
-];
-
-const SaskatchewanMax = 0.145;
-
-const Manitoba = [
-  [33723, 0.108],
-  [39162, 0.1275],
-];
-
-const ManitobaMax = 0.174;
-
-const Ontario = [
-  [45142, 0.0505],
-  [45143, 0.0915],
-  [59712, 0.1116],
-  [70000, 12.16],
-];
-
-const OntarioMax = 0.1316;
+import * as constants from "./constants.js";
 
 let provinceSelector = "BC";
 let selectedProvince = "BC";
@@ -63,22 +19,46 @@ function maxProvinceSelection(selectedProvince) {
 
   switch (selectedProvince) {
     case "Alberta":
-      maxProvince = albertaMax;
+      maxProvince = constants.albertaMax;
       break;
     case "BC":
-      maxProvince = BCMax;
+      maxProvince = constants.BCMax;
       break;
     case "Saskatchewan":
-      maxProvince = SaskatchewanMax;
+      maxProvince = constants.SaskatchewanMax;
       break;
     case "Manitoba":
-      maxProvince = ManitobaMax;
+      maxProvince = constants.ManitobaMax;
       break;
     case "Ontario":
-      maxProvince = OntarioMax;
+      maxProvince = constants.OntarioMax;
+      break;
+    case "Quebec":
+      maxProvince = constants.QuebecMax;
+      break;
+    case "newBrunswick":
+      maxProvince = constants.NewBrunswickMax;
+      break;
+    case "novaScotia":
+      maxProvince = constants.NovaScotiaMax;
+      break;
+    case "princeEdward":
+      maxProvince = constants.PrinceEdMax;
+      break;
+    case "newFoundLand":
+      maxProvince = constants.NewfoundlandMax;
+      break;
+    case "yukon":
+      maxProvince = constants.YukonMax;
+      break;
+    case "northWestTerritory":
+      maxProvince = constants.NorthWestMax;
+      break;
+    case "nunavut":
+      maxProvince = constants.NunavutMax;
       break;
     default:
-      maxProvince = albertaMax;
+      maxProvince = constants.albertaMax;
   }
 
   return maxProvince;
@@ -89,25 +69,49 @@ function provinceSelection(selectedProvince) {
 
   switch (selectedProvince) {
     case "Alberta":
-      province = Alberta;
+      province = constants.Alberta;
       break;
     case "BC":
-      province = BC;
+      province = constants.BC;
       break;
     case "Saskatchewan":
-      province = Saskatchewan;
+      province = constants.Saskatchewan;
       break;
     case "Manitoba":
-      province = Manitoba;
+      province = constants.Manitoba;
       break;
     case "Ontario":
-      province = Ontario;
+      province = constants.Ontario;
+      break;
+    case "Quebec":
+      province = constants.Quebec;
+      break;
+    case "newBrunswick":
+      province = constants.NewBrunswick;
+      break;
+    case "novaScotia":
+      province = constants.NovaScotia;
+      break;
+    case "princeEdward":
+      province = constants.PrinceEd;
+      break;
+    case "newFoundLand":
+      province = constants.Newfoundland;
+      break;
+    case "yukon":
+      province = constants.Yukon;
+      break;
+    case "northWestTerritory":
+      province = constants.NorthWest;
+      break;
+    case "nunavut":
+      province = constants.Nunavut;
       break;
     case "federal":
-      province = federal;
+      province = constants.federal;
       break;
     default:
-      province = defaultProvince;
+      province = constants.defaultProvince;
   }
 
   return province;
@@ -174,13 +178,15 @@ function provinceChanger(provinceName) {
   let provinceMax = maxProvinceSelection(provinceSelector);
   let provinceTaxArray = taxBracketGetter(provinceSelector, provinceMax);
   /*Functions to change Federal tax bracket */
-  let federalTaxArray = taxBracketGetter("federal", federalMax);
+  let federalTaxArray = taxBracketGetter("federal", constants.federalMax);
 
   /*Functions to display provincial and federal tax brackets */
   taxBracketCaller("taxBracketDisplayElement", provinceTaxArray);
   taxBracketCaller("federalTaxBracketDisplayElement", federalTaxArray);
   // taxBracketCaller("taxBracketDisplayElement", provinceTaxArray);
 }
+
+window.provinceChanger = provinceChanger;
 
 function taxBracketCaller(id, taxStringArray) {
   let displayString = "";
@@ -231,6 +237,8 @@ function hourlyWageButton() {
   wageType = "hourlyWage";
 }
 
+window.hourlyWageButton = hourlyWageButton;
+
 function salaryWageButton() {
   document.getElementById("mainHeading").innerHTML = "Enter your annual wage";
   document.getElementById("secondInputField").style.display = "none";
@@ -246,6 +254,8 @@ function salaryWageButton() {
 
   wageType = "salaryWage";
 }
+
+window.salaryWageButton = salaryWageButton;
 
 //Main section tax calculation
 
@@ -297,7 +307,7 @@ function calculateIncome() {
     document.getElementById("hourlyToAnnualCalculated").innerHTML = "$" + (calculatedAnnualSalary).toFixed(2);
 
     let provincialTax = taxCalculator(calculatedAnnualSalary, province, provinceMax);
-    let federalTax = taxCalculator(calculatedAnnualSalary, federal, federalMax);
+    let federalTax = taxCalculator(calculatedAnnualSalary, constants.federal, constants.federalMax);
 
     document.getElementById("provincialTaxDisplay").innerHTML = "$" + (provincialTax).toFixed(2);
     document.getElementById("federalTaxDisplay").innerHTML = "$" + (federalTax).toFixed(2);
@@ -312,6 +322,8 @@ function calculateIncome() {
   }
 
 }
+
+window.calculateIncome = calculateIncome;
 
 function firstDisplayHeading(inputField, secondaryInputField) {
   let calculatedIncome = 0;
@@ -351,4 +363,6 @@ function onLoadFunction() {
   salaryWageButton();
 
 }
+
+window.onLoadFunction = onLoadFunction;
 
