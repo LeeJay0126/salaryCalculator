@@ -296,12 +296,6 @@ function calculateIncome() {
 
   //Input validation goes here
 
-  console.log(inputValidation(mainInput, "display1"), "FirstOne");
-  console.log(inputValidation(secondaryInput, "display2"), "secondOne");
-  console.log(wageType);
-  console.log(mainInput);
-  console.log(firstDisplayHeading(mainInput, secondaryInput));
-
   if (inputValidation(mainInput, "display1") && (inputValidation(secondaryInput, "display2") || wageType == "salaryWage")) {
     let calculatedAnnualSalary = firstDisplayHeading(mainInput, secondaryInput);
     document.getElementById("hourlyToAnnualCalculated").innerHTML = "$" + (calculatedAnnualSalary).toFixed(2);
@@ -318,7 +312,7 @@ function calculateIncome() {
 
     let totalTaxPercentage = Number(totalTax) / Number(calculatedAnnualSalary);
     document.getElementById("resultDisplay").innerHTML = "Your total calculated tax is $" + totalTax + ". <br>"
-      + " Your tax is equal to approximately " + totalTaxPercentage.toFixed(2) + "% of your annual income.";
+      + " Your tax is equal to approximately </br>" + (totalTaxPercentage*100).toFixed(2) + "% of your annual income.";
   }
 
 }

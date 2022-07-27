@@ -15,7 +15,7 @@
 html {
     font-size: 62.5%;
     /* makes rem eql to 10px */
-    min-width: 120rem;
+    min-width: 130rem;
 }
 
 body {
@@ -93,12 +93,12 @@ header {
 /*------------------------------------------
     Service Section
 --------------------------------------------*/
-
+/* 
 .displayContents {
-    max-width: 120rem;
+    max-width: 140rem;
     max-height: 10rem;
     background-color: black;
-}
+} */
 
 .taxBracketSections {
     justify-content: center;
@@ -244,7 +244,7 @@ input [type=number] {
 .calculatedDisplayArea {
     height: 7rem;
     font-size: 1.4rem;
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
 .displayArea {
@@ -254,7 +254,7 @@ input [type=number] {
 .resultSection{
     display: flex;
     flex-direction: column;
-    gap: 10rem;
+    gap: 5rem;
 }
 
 .centerButton {
@@ -288,4 +288,5 @@ input [type=number] {
 
 #resultDisplay {
     height: 10rem;
+    font-weight: 600;
 }
